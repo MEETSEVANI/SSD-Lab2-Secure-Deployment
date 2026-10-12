@@ -46,7 +46,7 @@ InitialAccounts__Employee__Password
 
 When present, these settings create the initial accounts and assign their roles. When omitted, the app still creates the roles and sample company records, but it does not create login accounts. The initial password is only used when that account is first created; later password changes must be made through Identity.
 
-Do not put hosting connection strings, account passwords, publish profiles, or local environment files in Git. The app reads its SQL Server connection string from `ConnectionStrings__DefaultConnection` in the host's private settings. `Database__Provider` defaults to `SqlServer`.
+Do not put hosting connection strings, account passwords, publish profiles, or local environment files in Git. The deployed app reads its SQL Server connection string from `ConnectionStrings__DefaultConnection` and initial account values from the `InitialAccounts__...` settings. Supply them through the host's private configuration or IIS `web.config` environment variables; do not commit production values. `Database__Provider` defaults to `SqlServer`.
 
 ## Publish a Release build
 
@@ -57,7 +57,7 @@ dotnet publish SSD_Lab1.csproj --configuration Release --output ./publish
 
 Upload the contents of `publish` using the host's supported ASP.NET Core deployment method. Set `ASPNETCORE_ENVIRONMENT` to `Production`, configure the SQL Server connection string and the two initial accounts in private host settings, and require HTTPS. The Development settings file is excluded from publish output. Do not upload local database files.
 
-For this deployment, Azure SQL Server creation was blocked by the student subscription's region policy, so the app uses SQLite on an Azure App Service F1 Free plan. Configure `Database__Provider=Sqlite` and `ConnectionStrings__Sqlite=Data Source=D:\\home\\data\\ssd-lab2.db` in the App Service's private configuration. The app creates the data directory when it starts. App Service F1 is the free tier; do not scale the plan to a paid tier.
+For the no-cost host selected for this lab, the Somee free package supports ASP.NET Core 10 and includes one 30 MB SQL Server database. Its published limits include 150 MB of website storage and 5 GB monthly transfer; the free host injects a small advertisement and applies inactivity rules. Somee provides free Let's Encrypt HTTPS certificates, but free accounts must renew them manually every 90 days. Keep the site on the $0 package, configure the database and initial account settings privately, enable the certificate, and require HTTPS. Do not upgrade or add paid services.
 
 ## Manual functionality test plan
 
@@ -73,4 +73,4 @@ Run these checks against the deployed HTTPS site after deployment:
 
 ## Database schema
 
-The SQL Server migration is in `Migrations/`. SQL Server deployments apply pending migrations at startup. SQLite preview and free Azure deployment use `EnsureCreated` to initialize the model before seeding roles and company sample data.
+The SQL Server migration is in `Migrations/`. SQL Server deployments apply pending migrations at startup. SQLite is available for a local preview and uses `EnsureCreated` to initialize the model before seeding roles and company sample data.
