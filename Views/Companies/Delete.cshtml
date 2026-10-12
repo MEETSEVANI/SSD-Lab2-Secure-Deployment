@@ -1,0 +1,24 @@
+@model SSD_Lab1.Models.Company
+
+@{
+    ViewData["Title"] = "Delete company";
+}
+
+<h1>Delete company</h1>
+<p class="text-danger">Are you sure you want to delete this company?</p>
+<hr />
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Name)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.YearsInBusiness)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.YearsInBusiness)</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Website)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Website)</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Province)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Province)</dd>
+</dl>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-outline-secondary">Back to list</a>
+</form>

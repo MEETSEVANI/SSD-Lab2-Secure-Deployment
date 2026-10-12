@@ -1,0 +1,25 @@
+@model SSD_Lab1.Models.Company
+
+@{
+    ViewData["Title"] = "Company details";
+}
+
+<h1>Company details</h1>
+<hr />
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Name)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.YearsInBusiness)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.YearsInBusiness)</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Website)</dt>
+    <dd class="col-sm-9"><a href="@Model.Website" rel="noopener noreferrer" target="_blank">@Model.Website</a></dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Province)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.Province)</dd>
+</dl>
+<div>
+    @if (User.IsInRole("Supervisor"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    }
+    <a asp-action="Index" class="btn btn-outline-secondary">Back to list</a>
+</div>
