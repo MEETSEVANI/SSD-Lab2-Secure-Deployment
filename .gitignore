@@ -19,6 +19,7 @@ artifacts/
 !.env.example
 appsettings.*.local.json
 appsettings.*.secrets.json
+appsettings.Production.json
 Properties/PublishProfiles/
 *.pubxml
 *.publishsettings
