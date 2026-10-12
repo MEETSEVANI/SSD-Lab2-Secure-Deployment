@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.Sqlite;
 using SSD_Lab1.Data;
 using SSD_Lab1.Models;
 
@@ -12,7 +13,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     {
         var sqliteConnectionString = builder.Configuration.GetConnectionString("Sqlite")
             ?? "Data Source=SSD_Lab1.preview.db";
-        options.UseSqlite(sqliteConnectionString);
+        var sqliteOptions = new SqliteConnectionStringBuilder(sqliteConnectionString);
+        var databaseDirectory = Path.GetDirectoryName(sqliteOptions.DataSource);
+        if (!string.IsNullOrEmpty(databaseDirectory))
+        {
+            Directory.CreateDirectory(databaseDirectory);
+        }
+
+        options.UseSqlite(sqliteOptions.ConnectionString);
     }
     else if (databaseProvider.Equals("SqlServer", StringComparison.OrdinalIgnoreCase))
     {

@@ -57,7 +57,7 @@ dotnet publish SSD_Lab1.csproj --configuration Release --output ./publish
 
 Upload the contents of `publish` using the host's supported ASP.NET Core deployment method. Set `ASPNETCORE_ENVIRONMENT` to `Production`, configure the SQL Server connection string and the two initial accounts in private host settings, and require HTTPS. The Development settings file is excluded from publish output. Do not upload local database files.
 
-For a no-charge Azure deployment, use Azure for Students, an App Service F1 Free plan, and the Azure SQL Database free offer. In the SQL offer settings, select **Auto-pause the database until next month** when the free allowance is reached. This pauses database access at the monthly limit instead of opting into overage charges. Do not select a paid App Service plan or the SQL option that continues for additional charges.
+For this deployment, Azure SQL Server creation was blocked by the student subscription's region policy, so the app uses SQLite on an Azure App Service F1 Free plan. Configure `Database__Provider=Sqlite` and `ConnectionStrings__Sqlite=Data Source=D:\\home\\data\\ssd-lab2.db` in the App Service's private configuration. The app creates the data directory when it starts. App Service F1 is the free tier; do not scale the plan to a paid tier.
 
 ## Manual functionality test plan
 
@@ -73,4 +73,4 @@ Run these checks against the deployed HTTPS site after deployment:
 
 ## Database schema
 
-The SQL Server migration is in `Migrations/`. The app applies pending SQL Server migrations at startup before seeding roles and company sample data. The production database account must have permission to apply these migrations.
+The SQL Server migration is in `Migrations/`. SQL Server deployments apply pending migrations at startup. SQLite preview and free Azure deployment use `EnsureCreated` to initialize the model before seeding roles and company sample data.
