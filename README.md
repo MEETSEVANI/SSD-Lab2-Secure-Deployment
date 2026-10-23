@@ -79,7 +79,7 @@ Initial account settings create the matching users only if they do not already e
 ## Staging access
 
 - Existing staging address: [https://ssd-lab2-meet.somee.com](https://ssd-lab2-meet.somee.com)
-- The address has previously hosted the company-directory version. Redeploy this updated build and confirm the added departments, office locations, message board, and migration are live before submitting this project.
+- The updated build was deployed on October 22, 2026. The HTTPS home page loads, and signed-out requests to `/Departments`, `/OfficeLocations`, and `/MessageBoard` redirect to Identity sign-in.
 - Visitors must sign in to use the protected directory and message board. A registered account can view records and post to the board. Supervisor test credentials should be shared privately with the instructor and authorized peer reviewers only.
 - Do not use real personal or confidential information. Limit security testing to this staging application and normal course review; do not attempt denial of service, access to the hosting account, or testing of other Somee customers.
 
@@ -104,7 +104,7 @@ On October 22, 2026, the project built with .NET SDK 10.0.402 with zero warnings
 - Empty department and office forms and empty messages are rejected by server-side validation.
 - Message text is HTML-encoded in the page; message edit and delete routes return 404.
 
-This local review does not confirm that the updated build has been deployed to the staging host.
+Staging verification on October 22, 2026 confirmed the live HTTPS home page and sign-in redirects for the new protected routes. Signed-in CRUD and message-posting checks still require the group's test accounts and should be completed before peer review.
 
 The SQL Server provider brings in `System.Security.Cryptography.Pkcs` through Microsoft.Data.SqlClient. The project pins the dependency to the patched 9.0.21 release.
 
