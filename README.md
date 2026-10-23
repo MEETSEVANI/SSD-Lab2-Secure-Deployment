@@ -1,4 +1,4 @@
-# SSD Lab 1 Company Directory
+# Group System Deployment Company Directory
 
 ASP.NET Core MVC application for a small company directory. Employees can read company, department, and office information. Supervisors can manage those records. Signed-in users can post to the message board; messages are append-only in the web interface.
 
