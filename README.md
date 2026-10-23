@@ -110,4 +110,4 @@ The SQL Server provider brings in `System.Security.Cryptography.Pkcs` through Mi
 
 ## Source repository
 
-The repository should contain the complete buildable source, migrations, and this README. Keep screenshots, database files, publish output, personal reflections, connection strings, and passwords out of the repository. Add the final online repository URL to the submission document after the group publishes the source.
+The repository contains the complete buildable source and migrations: [MEETSEVANI/SSD-Lab2-Secure-Deployment](https://github.com/MEETSEVANI/SSD-Lab2-Secure-Deployment). Keep screenshots, database files, publish output, personal reflections, connection strings, and passwords out of the repository.
