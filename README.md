@@ -80,7 +80,7 @@ Initial account settings create the matching users only if they do not already e
 
 - Existing staging address: [https://ssd-lab2-meet.somee.com](https://ssd-lab2-meet.somee.com)
 - The updated build was deployed on October 22, 2026. The HTTPS home page loads, and signed-out requests to `/Departments`, `/OfficeLocations`, and `/MessageBoard` redirect to Identity sign-in.
-- Visitors must sign in to use the protected directory and message board. A registered account can view records and post to the board. Supervisor test credentials should be shared privately with the instructor and authorized peer reviewers only.
+- Visitors can select Register or visit `/Identity/Account/Register`, enter their name and email, and create a password. They can then sign in at `/Identity/Account/Login` to view records and post to the message board. The group should share Supervisor test credentials privately with the instructor and authorized peer reviewers only.
 - Do not use real personal or confidential information. Limit security testing to this staging application and normal course review; do not attempt denial of service, access to the hosting account, or testing of other Somee customers.
 
 ## Manual acceptance checklist
