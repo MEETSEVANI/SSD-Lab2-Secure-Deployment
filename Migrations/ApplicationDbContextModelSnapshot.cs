@@ -268,57 +268,22 @@ namespace SSD_Lab1.Migrations
                     b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("SSD_Lab1.Models.Department", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("Id").ValueGeneratedOnAdd().HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Description").IsRequired().HasMaxLength(500).HasColumnType("nvarchar(500)");
+                    b.Property<string>("Email").IsRequired().HasMaxLength(254).HasColumnType("nvarchar(254)");
+                    b.Property<string>("ManagerName").IsRequired().HasMaxLength(100).HasColumnType("nvarchar(100)");
+                    b.Property<string>("Name").IsRequired().HasMaxLength(80).HasColumnType("nvarchar(80)");
+                    b.Property<string>("OfficeLocation").IsRequired().HasMaxLength(100).HasColumnType("nvarchar(100)");
+                    b.Property<string>("Phone").HasMaxLength(25).HasColumnType("nvarchar(25)");
+                    b.HasKey("Id");
+                    b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("SSD_Lab1.Models.OfficeLocation", b =>
                 {
-                    b.HasOne("SSD_Lab1.Models.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.HasOne("SSD_Lab1.Models.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SSD_Lab1.Models.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.HasOne("SSD_Lab1.Models.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-#pragma warning restore 612, 618
-        }
-    }
-}
+                    b.Property<int>("Id").ValueGeneratedOnAdd().HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Address").IsRequired().HasMaxLength(150).HasColumnType("nvarcvó¿m¢G§²ÚîÆ­yİ™[ÜY[\Ú[™È\Ù][™ÜË‘]™[ÜY[šœÛÛ˜ˆ›ÜˆHÜ›ÜÜË\]›Ü›HÔS]H™]šY]Î‚‚˜˜\ÚTÔ‘UÓÔ‘WÑS•’T“Ó“QS•Q]™[ÜY[‘]X˜\ÙW×Ô›İšY\TÜ[]HÛÛ›™Xİ[Û”İš[™Ü××ÔÜ[]OIÑ]HÛİ\˜ÙOKİ\ÔÔÑÓXŒKœ™]šY]Ë™‰È™İ™][ˆK[›Ë[][˜Ú\›Ùš[HK]\›È‹ËÛØØ[ÜİLMB˜‚•HÔS]H™]šY]È\Ù\È[œİ\™PÜ™X]YÈHÚXÚÙYZ[ˆÔSÙ\™\ˆZYÜ˜][ÛœÈ\™H\ÙYHHİ[™\™ÔSÙ\™\ˆÛÛ™šYİ\˜][Û‹‚‚ˆÈÈZ[[™X›\Ú‚˜˜\Ú™İ™]™\İÜ™HÔÑÓXŒKœÛ‚™İ™]X›\ÚÔÑÓXŒK˜ÜÜ›ÚˆKXÛÛ™šYİ\˜][Ûˆ™[X\ÙHK[İ]]‹ÜX›\Ú˜‚•HÔSÙ\™\ˆZYÜ˜][Ûˆ[œÈ]\XØ][Ûˆİ\\ˆ›ÜˆH^\İ[™ÈÛÛYYHİYÚ[™ÈÚ]KÙ[XİH“‘ULTÔ“‘UÛÜ™H™\œÚ[Ûˆ[ˆHÚ]H\Ú›Ø\™X›\ÚH\[ˆ\ØYHÛÛ[ÈÙˆX›\ÚÈHÚ]IÜÈ›Ûİ\Ú[™È•ÜˆÛÛYYIÜÈš[HX[˜YÙ\‹ˆHX›\Úİ]][˜ÛY\ÈHÙX‹˜ÛÛ™šYØ™\]Z\™YHRTËˆÔÛÛYYH\Ş[Y[[œİXİ[Ûœ×JÎ‹ËÜÛÛYYK˜ÛÛKÑÚØKÒ[Ğ\XÛKÌŒNKÒİ×Ù×ÒWÙ\ŞWÛ^WØ\XØ][Û‰LÑŠH0­ÈÔÛÛYYHTÔ“‘UÛÜ™HİZY[˜ÙWJÎ‹ËÜÛÛYYK˜ÛÛKÑÒĞKÒ[Ğ\XÛKÌŒËÑ\ŞWĞTÔ“™]ĞÛÜ™WØ\XØ][ÛŠB‚Y\ˆ\ØY[™ËXÙHHÙ\™\‹[Û›H\Ù][™ÜË”›ÙXİ[Û‹šœÛÛ˜™\ÚYHH\XØ][Ûˆ\Ú[™ÈHÛÛYYHš[HX[˜YÙ\‹ˆ\ÙH\Ù][™ÜË”›ÙXİ[Û‹šœÛÛ‹™^[\X\ÈHÚ\HİZYH[™™\XÙH]™\HXÙZÛ\ˆÚ]˜[Y\Èœ›ÛHHÜİ\Ú›Ø\™ˆHX›\Ú^ÛY\È›İ›ÙXİ[ÛˆÙ][™ÜÈš[\ÈÛÈ]\ˆ\ØYÈÚ[›İİ™\Üš]HHÜİ	ÜÈÙXÜ™]˜[Y\ÎÈÈ›İ[]HHÙ\™\‹[Û›HÙ][™ÜÈš[H\š[™È\Ş[Y[ˆ]\È[ÛÈYÛ›Ü™YHÚ][™]\İ™]™\ˆ™HYYÈH™\ÜÚ]ÜKˆÙ]‚‚˜^TÔ‘UÓÔ‘WÑS•’T“Ó“QS•T›ÙXİ[Û‚ÛÛ›™Xİ[Û”İš[™Ü××ÑY˜][ÛÛ›™Xİ[ÛOÔSÙ\™\ˆÛÛ›™Xİ[Ûˆİš[™Ï‚’[š]X[XØÛİ[××Ôİ\\š\ÛÜ—×Ñ[XZ[Oİ\\š\ÛÜˆ\İXØÛİ[[XZ[‚’[š]X[XØÛİ[××Ôİ\\š\ÛÜ—×Ô\ÜİÛÜ™O[š\]YHİ›Û™È\ÜİÛÜ™‚’[š]X[XØÛİ[××Ñ[\ŞYYW×Ñ[XZ[O[\ŞYYH\İXØÛİ[[XZ[‚’[š]X[XØÛİ[××Ñ[\ŞYYW×Ô\ÜİÛÜ™O[š\]YHİ›Û™È\ÜİÛÜ™‚˜‚’[š]X[XØÛİ[Ù][™ÜÈÜ™X]HHX]Ú[™È\Ù\œÈÛ›HYˆ^HÈ›İ[™XYH^\İˆ^HÈ›İ™\Ù]^\İ[™È\ÜİÛÜ™ËˆÚ[™ÙH^\İ[™È\ÜİÛÜ™È›İYÚY[]H™Y›Ü™HÚ\š[™È\İXØÛİ[Ëˆ™]™\ˆÛÛ[Z]ÛÛ›™Xİ[Ûˆİš[™ÜËXØÛİ[\ÜİÛÜ™ËX›\Ú›Ùš[\ËÜˆ›ÙXİ[ÛˆÙ][™ÜÈš[\Ëˆ™\]Z\™HÈ]HÜİ[™ÛÛ™š\›HH›ÙXİ[ÛˆÚ]HÙ\È›İ^ÜÙH]™[ÜY[^Ù\[Ûˆ]Z[Ë‚‚ˆÈÈİYÚ[™ÈXØÙ\ÜÂ‚‹H^\İ[™ÈİYÚ[™ÈY™\ÜÎˆÚÎ‹ËÜÜÙ[XŒ‹[YY]œÛÛYYK˜ÛÛWJÎ‹ËÜÜÙ[XŒ‹[YY]œÛÛYYK˜ÛÛJB‹HHY™\ÜÈ\È™]š[İ\ÛHÜİYHÛÛ\[KY\™XİÜH™\œÚ[Û‹ˆ™Y\ŞH\È\]YZ[[™ÛÛ™š\›HHYY\\Y[ËÙ™šXÙHØØ][ÛœËY\ÜØYÙH›Ø\™[™ZYÜ˜][Ûˆ\™H]™H™Y›Ü™HİX›Z][™È\È›Ú™Xİ‚‹Hš\Ú]ÜœÈ]\İÚYÛˆ[ˆÈ\ÙHH›İXİY\™XİÜH[™Y\ÜØYÙH›Ø\™ˆH™YÚ\İ\™YXØÛİ[Ø[ˆšY]È™XÛÜ™È[™ÜİÈH›Ø\™ˆİ\\š\ÛÜˆ\İÜ™Y[X[ÈÚİ[™HÚ\™Yš]˜][HÚ]H[œİXİÜˆ[™]]Üš^™YY\ˆ™]šY]Ù\œÈÛ›K‚‹HÈ›İ\ÙH™X[\œÛÛ˜[ÜˆÛÛ™šY[X[[™›Ü›X][Û‹ˆ[Z]ÙXİ\š]H\İ[™ÈÈ\ÈİYÚ[™È\XØ][Ûˆ[™›Ü›X[Ûİ\œÙH™]šY]ÎÈÈ›İ][\[šX[ÙˆÙ\šXÙKXØÙ\ÜÈÈHÜİ[™ÈXØÛİ[Üˆ\İ[™ÈÙˆİ\ˆÛÛYYHİ\İÛY\œË‚‚ˆÈÈX[X[XØÙ\[˜ÙHÚXÚÛ\İ‚ŒKˆÚYÛ™Y[İ]š\Ú]ÜœÈÚÈÜ[ˆĞÛÛ\[šY\ØÑ\\Y[ØÓÙ™šXÙSØØ][ÛœØÜˆÓY\ÜØYÙP›Ø\™\™H™Y\™XİYÈY[]HÚYÛ‹Z[‹‚Œ‹ˆH™YÚ\İ\™YÚYÛ™YZ[ˆ\Ù\ˆØ[ˆšY]ÈÛÛ\[K\\Y[[™Ù™šXÙH™XÛÜ™È[™Ü[ˆZ\ˆ]Z[YÙ\Ë‚ŒËˆH™Yİ[\ˆ\Ù\ˆØ[››İÜ™X]KY]Üˆ[]HHÛÛ\[K\\Y[ÜˆÙ™šXÙHØØ][ÛÈ\™XİT“È™]\›ˆXØÙ\ÜÈ[šYY‚ˆHİ\\š\ÛÜˆØ[ˆÜ™X]KY][™[]H™XÛÜ™È[ˆXXÚÙˆH™YHÔ•QÙXİ[ÛœË‚Kˆ[˜[YÜˆ[\HÔ•Q›Ü›HİX›Z\ÜÚ[ÛœÈÚİÈ˜[Y][Ûˆ\œ›ÜœÈ[™È›İØ]™H]K‚‹ˆHÚYÛ™YZ[ˆ\Ù\ˆØ[ˆÜİHY\ÜØYÙKˆH›Ø\™\Ü^\È]È]]Üˆ[™UÈ[YKˆØÜš\[ZÙH^\È\Ü^YY\È^‚Ëˆ\™H\™H›ÈY]Üˆ[]HÛÛ›ÛÈÜˆXİ[ÛœÈ›ÜˆY\ÜØYÙ\Ë[˜ÛY[™ÈÚ[ˆ™\]Y\İYHHİ\\š\ÛÜ‹‚ˆÚYÛ‹[İ]™]™[ÈXØÙ\ÜÈÈ›İXİY›İ]\ÎÈH\ŞYYÚ]H\Ù\ÈÈ[™Ù\È›İ^ÜÙH]™[ÜY[^Ù\[Ûˆ]Z[Ë‚‚ˆÈÈØØ[™\šYšXØ][Û‚‚“ÛˆØİØ™\ˆŒ‹Œ‹H›Ú™XİZ[Ú]“‘UÑÈLŒˆÚ]™\›ÈØ\›š[™ÜÈ[™™\›È\œ›ÜœËˆHX[X[ØØ[XØÙ\[˜ÙH™]šY]È\Ú[™ÈH[\Ü˜\HÔS]H]X˜\ÙHÛÛ™š\›YY‚‚‹HÚYÛ™Y[İ]™\]Y\İÈÈ[›İXİYÛÛ›Û\œÈ™Y\™XİÈY[]HÚYÛ‹Z[‹‚‹H[\ŞYY\ÈØ[ˆ™XYH\™XİÜK\™H[šYYÜš]H›İ]\Ë[™Ø[ˆÜİHY\ÜØYÙK‚‹Hİ\\š\ÛÜœÈØ[ˆÜ™X]KY][™[]HÛÛ\[K\\Y[[™Ù™šXÙK[ØØ][Ûˆ™XÛÜ™Ë‚‹H[\H\\Y[[™Ù™šXÙH›Ü›\È[™[\HY\ÜØYÙ\È\™H™Z™XİYHÙ\™\‹\ÚYH˜[Y][Û‹‚‹HY\ÜØYÙH^\ÈSY[˜ÛÙY[ˆHYÙNÈY\ÜØYÙHY][™[]H›İ]\È™]\›ˆ‚‚•\ÈØØ[™]šY]ÈÙ\È›İÛÛ™š\›H]H\]YZ[\È™Y[ˆ\ŞYYÈHİYÚ[™ÈÜİ‚‚•HÔSÙ\™\ˆ›İšY\ˆœš[™ÜÈ[ˆŞ\İ[K”ÙXİ\š]KÜ\ÙÜ˜\K”ØÜØ›İYÚZXÜ›ÜÛÙ‘]K”Ü[ÛY[ˆH›Ú™Xİ[œÈH\[™[˜ŞHÈH]ÚYKŒŒŒH™[X\ÙK‚‚ˆÈÈÛİ\˜ÙH™\ÜÚ]ÜB‚•H™\ÜÚ]ÜHÚİ[ÛÛZ[ˆHÛÛ\]HZ[X›HÛİ\˜ÙKZYÜ˜][ÛœË[™\È‘PQQKˆÙY\ØÜ™Y[œÚİË]X˜\ÙHš[\ËX›\Úİ]]\œÛÛ˜[™Y›Xİ[ÛœËÛÛ›™Xİ[Ûˆİš[™ÜË[™\ÜİÛÜ™Èİ]ÙˆH™\ÜÚ]ÜKˆYHš[˜[Û›[™H™\ÜÚ]ÜHT“ÈHİX›Z\ÜÚ[ÛˆØİ[Y[Y\ˆHÜ›İ\X›\Ú\ÈHÛİ\˜ÙK‚
