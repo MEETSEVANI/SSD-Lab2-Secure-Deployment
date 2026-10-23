@@ -100,4 +100,37 @@ public static class SeedData
 
         if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
         {
-    -vóÍ­¢G§²ÚîÆ­yÕ‘…Ñ¥½¸µ™½Èô‰5…¹…•É9…µ”ˆ±…ÍÌô‰Ñ•áÐµ‘…¹•Èˆøð½ÍÁ…¸ø4(€€€€€€€€€€€€ð½‘¥Øø4(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™½É´µÉ½ÕÀˆø4(€€€€€€€€€€€€€€€€ñ±…‰•°…ÍÀµ™½Èô‰µ…¥°ˆ±…ÍÌô‰½¹ÑÉ½°µ±…‰•°ˆøð½±…‰•°ø4(€€€€€€€€€€€€€€€€ñ¥¹ÁÕÐ…ÍÀµ™½Èô‰µ…¥°ˆ±…ÍÌô‰™½É´µ½¹ÑÉ½°ˆ€¼ø4(€€€€€€€€€€€€€€€€ñÍÁ…¸…ÍÀµÙ…±¥‘…Ñ¥½¸µ™½Èô‰µ…¥°ˆ±…ÍÌô‰Ñ•áÐµ‘…¹•Èˆøð½ÍÁ…¸ø4(€€€€€€€€€€€€ð½‘¥Øø4(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™½É´µÉ½ÕÀˆø4(€€€€€€€€€€€€€€€€ñ±…‰•°…ÍÀµ™½Èô‰A¡½¹”ˆ±…ÍÌô‰½¹ÑÉ½°µ±…‰•°ˆøð½±…‰•°ø4(€€€€€€€€€€€€€€€€ñ¥¹ÁÕÐ…ÍÀµ™½Èô‰A¡½¹”ˆ±…ÍÌô‰™½É´µ½¹ÑÉ½°ˆ€¼ø4(€€€€€€€€€€€€€€€€ñÍÁ…¸…ÍÀµÙ…±¥‘…Ñ¥½¸µ™½Èô‰A¡½¹”ˆ±…ÍÌô‰Ñ•áÐµ‘…¹•Èˆøð½ÍÁ…¸ø4(€€€€€€€€€€€€ð½‘¥Øø4(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™½É´µÉ½ÕÀˆø4(€€€€€€€€€€€€€€€€ñ±…‰•°…ÍÀµ™½Èô‰=™™¥•1½…Ñ¥½¸ˆ±…ÍÌô‰½¹ÑÉ½°µ±…‰•°ˆøð½±…‰•°ø4(€€€€€€€€€€€€€€€€ñ¥¹ÁÕÐ…ÍÀµ™½Èô‰=™™¥•1½…Ñ¥½¸ˆ±…ÍÌô‰™½É´µ½¹ÑÉ½°ˆ€¼ø4(€€€€€€€€€€€€€€€€ñÍÁ…¸…ÍÀµÙ…±¥‘…Ñ¥½¸µ™½Èô‰=™™¥•1½…Ñ¥½¸ˆ±…ÍÌô‰Ñ•áÐµ‘…¹•Èˆøð½ÍÁ…¸ø4(€€€€€€€€€€€€ð½‘¥Øø4(€€€€€€€€€€€€ñ‘¥Ø±…ÍÌô‰™½É´µÉ½ÕÀˆø4(€€€€€€€€€€€€€€€€ñ¥¹ÁÕÐÑåÁ”ô‰ÍÕ‰µ¥ÐˆÙ…±Õ”ô‰M…Ù”ˆ±…ÍÌô‰‰Ñ¸‰Ñ¸µÁÉ¥µ…Éäˆ€¼ø4(€€€€€€€€€€€€ð½‘¥Øø4(€€€€€€€€ð½™½É´ø4(€€€€ð½‘¥Øø4(ð½‘¥Øø4(4(ñ‘¥Øø4(€€€€ñ„…ÍÀµ…Ñ¥½¸ô‰%¹‘•àˆù	…¬Ñ¼1¥ÍÐð½„ø4(ð½‘¥Øø4(4)Í•Ñ¥½¸MÉ¥ÁÑÌì4(€€€í…Ý…¥Ð!Ñµ°¹I•¹‘•ÉA…ÉÑ¥…±Íå¹Œ ‰}Y…±¥‘…Ñ¥½¹MÉ¥ÁÑÍA…ÉÑ¥…°ˆ¤íô4)ô4
+            throw new InvalidOperationException(
+                $"Both the {role} email and password must be configured under InitialAccounts:{role}.");
+        }
+
+        var user = await userManager.FindByEmailAsync(email);
+        if (user is null)
+        {
+            user = new ApplicationUser
+            {
+                UserName = email,
+                Email = email,
+                EmailConfirmed = true,
+                FirstName = firstName,
+                LastName = lastName,
+                City = city
+            };
+
+            var createResult = await userManager.CreateAsync(user, password);
+            if (!createResult.Succeeded)
+            {
+                throw new InvalidOperationException($"Could not create {email}: {string.Join("; ", createResult.Errors.Select(error => error.Description))}");
+            }
+        }
+
+        if (!await userManager.IsInRoleAsync(user, role))
+        {
+            var roleResult = await userManager.AddToRoleAsync(user, role);
+            if (!roleResult.Succeeded)
+            {
+                throw new InvalidOperationException($"Could not assign {role} to {email}: {string.Join("; ", roleResult.Errors.Select(error => error.Description))}");
+            }
+        }
+    }
+}

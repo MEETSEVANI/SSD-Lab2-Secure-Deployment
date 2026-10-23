@@ -1,0 +1,15 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "<SQL Server connection string from the hosting dashboard>"
+  },
+  "InitialAccounts": {
+    "Supervisor": {
+      "Email": "<supervisor test account email>",
+      "Password": "<unique strong password>"
+    },
+    "Employee": {
+      "Email": "<employee test account email>",
+      "Password": "<unique strong password>"
+    }
+  }
+}
